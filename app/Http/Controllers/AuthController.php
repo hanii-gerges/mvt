@@ -45,7 +45,7 @@ class AuthController extends Controller
         }
 
         $token = Auth::user()->createToken('authToken')->accessToken;
-        return response()->json(['status'=>'ok','access_token' => $token]);
+        return response()->json(['status'=>'ok','token' => $token]);
 
     }
 
