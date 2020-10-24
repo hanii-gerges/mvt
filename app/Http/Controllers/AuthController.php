@@ -48,4 +48,10 @@ class AuthController extends Controller
         return response()->json(['status'=>'ok','access_token' => $token]);
 
     }
+
+    public function userInfo()
+    {
+        $user = Auth::user();
+        return response()->json(['status'=>'ok','user'=>$user]);
+    }
 }
