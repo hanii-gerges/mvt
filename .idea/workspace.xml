@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53a770ab-26ef-4e12-9086-790ebc376c83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/mvt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mvt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_04_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_04_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +175,8 @@
       <option name="presentableId" value="Default" />
       <updated>1602229861220</updated>
       <workItem from="1602229862568" duration="1556000" />
-      <workItem from="1603386796188" duration="4106000" />
+      <workItem from="1603386796188" duration="5627000" />
+      <workItem from="1603462684598" duration="698000" />
     </task>
     <servers />
   </component>
@@ -198,9 +192,9 @@
       <screen x="0" y="25" width="1366" height="743" />
     </state>
     <state x="331" y="25" width="694" height="743" key="#PHP/0.25.1366.743@0.25.1366.743" timestamp="1603389275375" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1603398163700">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1603399052750">
       <screen x="0" y="25" width="1366" height="743" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.25.1366.743@0.25.1366.743" timestamp="1603398163700" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.25.1366.743@0.25.1366.743" timestamp="1603399052750" />
   </component>
 </project>

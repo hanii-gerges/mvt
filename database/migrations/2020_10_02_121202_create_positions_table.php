@@ -15,7 +15,7 @@ class CreatePositionsTable extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->enum('position',['volunteer','section_head','branch_head','admin']);
+            $table->enum('name',['volunteer','section_head','branch_head','admin']);
             $table->timestamps();
         });
     }
