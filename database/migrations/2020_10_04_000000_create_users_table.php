@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('section_id')->default(1);//->constrained('users')->onDelete('cascade');
             $table->foreignId('branch_id')->default(1);//->constrained('users')->onDelete('cascade');
             $table->string('name');
-            $table->text('bio')->default('');
+            $table->text('bio')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
