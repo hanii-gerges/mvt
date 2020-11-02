@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Article;
 
-class SectionTableSeeder extends Seeder
+class ArticlesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,6 @@ class SectionTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Article::factory()->count(5)->create();
     }
 }

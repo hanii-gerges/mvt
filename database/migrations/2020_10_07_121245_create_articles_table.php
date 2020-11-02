@@ -16,6 +16,10 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');//because foreign key must be the same type as the primary
+            $table->unsignedBigInteger('category_id');
+            $table->string('title');
+            $table->text('body');
+            $table->boolean('status')->default(0); 
             $table->timestamps();
         });
     }

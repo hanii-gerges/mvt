@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Position;
+use App\Models\Question;
 
-class PositionTableSeeder extends Seeder
+class QuestionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class PositionTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        Question::factory()->count(5)->create();
     }
 }

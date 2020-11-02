@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Position;
+use App\Models\Event;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PositionFactory extends Factory
+class EventFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Position::class;
+    protected $model = Event::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +23,9 @@ class PositionFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['volunteer','section_head','branch_head','admin']),
+            'head_id' => User::all()->random()->id,
+            'title' => $this->faker->realText(10),
+            'body' => $this->faker->realText(100),
         ];
     }
 }

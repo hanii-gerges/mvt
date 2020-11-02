@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Event;
 
-class BranchTableSeeder extends Seeder
+
+class EventsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +15,6 @@ class BranchTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Event::factory()->count(5)->create();
     }
 }
