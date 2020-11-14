@@ -9,6 +9,13 @@ class Rate extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'from_user',
+        'to_user',
+        'rate',
+        'description',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

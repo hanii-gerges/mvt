@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->unsignedBigInteger('head_id');
             $table->string('title');
             $table->text('body');
+            $table->boolean('status');
             $table->timestamps();
         });
 

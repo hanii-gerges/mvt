@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('status'); // 1byte .. while it will take 1byte per char + 2bytes for the length information if its VARCHAR
+            $table->boolean('status')->default(1); // 1byte .. while it will take 1byte per char + 2bytes for the length information if its VARCHAR
+            $table->boolean('top_user')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\User;
 
-class QuestionResource extends JsonResource
+class NewsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,10 @@ class QuestionResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
             'title' => $this->title,
+            'images' => 'not yet',
             'body' => $this->body,
-            //'answer' => $this->answer,     //add answers
-            'category' => $this->category,
-            'tags' => $this->tags,
+            'author' => new UserResource(User::find($this->user_id)),
             'status' => $this->status,
         ];
     }

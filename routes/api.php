@@ -6,6 +6,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\RateController;
+use App\Http\Controllers\PromotionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,17 +34,25 @@ Route::get('/users/{user}',[UserController::class,'show']);
 
 Route::get('/articles',[ArticleController::class,'index']);
 Route::post('/articles',[ArticleController::class,'store']);
-Route::get('articles/{article}',[ArticleController::class,'show']);
+Route::get('/articles/{article}',[ArticleController::class,'show']);
 Route::put('/articles/{article}',[ArticleController::class,'update']); //change from form-data to x-www-form-urlencoded 
 Route::delete('/articles/{article}',[ArticleController::class,'destroy']);
 
 Route::get('/questions',[QuestionController::class,'index']);
 Route::post('/questions',[QuestionController::class,'store']);
-Route::get('questions/{question}',[QuestionController::class,'show']);
-Route::put('/questions/{question}',[QuestionController::class,'update']); //change from form-data to x-www-form-urlencoded 
+Route::get('/questions/{question}',[QuestionController::class,'show']);
+Route::put('/questions/{question}',[QuestionController::class,'update']); 
 Route::delete('/questions/{question}',[QuestionController::class,'destroy']);
 
+Route::get('/events',[EventController::class,'index']);
+Route::post('/events',[EventController::class,'store']);
+Route::get('/events/{event}',[EventController::class,'show']);
+Route::put('/events/{event}',[EventController::class,'update']);  
+Route::delete('/events/{event}',[EventController::class,'destroy']);
 
+Route::post('/rate',[RateController::class,'addRate']);
+
+Route::put('/promote',[PromotionController::class,'promote']);
 
 
 

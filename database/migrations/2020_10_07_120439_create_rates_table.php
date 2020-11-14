@@ -15,11 +15,13 @@ class CreateRatesTable extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('from_user')->constrained('users')->onDelete('cascade');
-            $table->foreignId('to_user')->constrained('users')->onDelete('cascade');
-            $table->smallInteger('rate');
+            $table->unsignedBigInteger('from_user');
+            $table->unsignedBigInteger('to_user');
+            $table->smallInteger('rate')->default(7);
             $table->text('description');
             $table->timestamps();
+
+            $table->index('to_user');
         });
     }
 

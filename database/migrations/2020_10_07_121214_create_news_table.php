@@ -17,7 +17,8 @@ class CreateNewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->string('body');
+            $table->text('body');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

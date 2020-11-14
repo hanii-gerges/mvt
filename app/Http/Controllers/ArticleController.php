@@ -44,6 +44,8 @@ class ArticleController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required',
             'body' => 'required',
+            'status' => 'required|boolean',
+            'category_id' => 'required',
             'tags' => 'exists:tags,id'
         ]);
 
@@ -72,7 +74,7 @@ class ArticleController extends Controller
     
     public function show($id)
     {
-        if(!$article=Article::find($id))
+        if(!$article = Article::find($id))
         {
             return response()->json(['status'=>'No Article Found with this id']);
         }
@@ -85,12 +87,13 @@ class ArticleController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required',
             'body' => 'required',
+            'category_id' => 'required',
             'tags' => 'exists:tags,id'
         ]);
 
         if($validator->fails())
         {
-            return response()->json(['status',$validator->errors()]);
+            return response()->json(['status' => $validator->errors()]);
         }
 
         if(!$article=Article::find($id))

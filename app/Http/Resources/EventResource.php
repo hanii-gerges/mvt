@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Models\User;
 
-class QuestionResource extends JsonResource
+class EventResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -19,10 +18,9 @@ class QuestionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
-            //'answer' => $this->answer,     //add answers
-            'category' => $this->category,
-            'tags' => $this->tags,
+            'participants' => $this->users,
             'status' => $this->status,
+            'count' => $this->users->count(),
         ];
     }
 }
