@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -33,5 +34,17 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+
+	// Here you can return your own response or work with request
+	// return response()->json(['status' : false], 401);
+
+	// This is the default
+        return $request->expectsJson()
+                    ? response()->json(['status' => $exception->getMessage()], 401)
+                    : response()->json(['status' => 'Accept Header missing'], 401);
     }
 }

@@ -12,7 +12,7 @@ class AuthController extends Controller
     {
         // didn't use validate helper function because if fails it will redirect to the previous page
         $validator = Validator::make($request->all(),[
-            'name' => 'required|max:50',
+            'fullname' => 'required|max:50',
             'email' => 'required|email|unique:users|max:50',
             'password' => 'required'
         ]);
@@ -23,7 +23,7 @@ class AuthController extends Controller
         }
         $request['password'] = bcrypt($request['password']);
         $user = User::create($request->all());
-        $token = $user->createToken('authToken')->accessToken;
+        $token = $user->createToken('authToken')->plainTextToken;
         return response()->json(['status'=>'ok','token'=>$token]);
     }
 
@@ -43,10 +43,18 @@ class AuthController extends Controller
         {
             return response()->json(['status'=>'Invalid Credentials']);
         }
-
-        $token = Auth::user()->createToken('authToken')->accessToken;
+        $user = Auth::user();
+        $user->tokens()->where('tokenable_id', $user->id)->delete();
+        
+        $token = Auth::user()->createToken('authToken')->plainTextToken;
         return response()->json(['status'=>'ok','token' => $token]);
 
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['status'=>'ok']);
     }
 
     public function userInfo()
