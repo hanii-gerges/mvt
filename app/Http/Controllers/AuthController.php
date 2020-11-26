@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
@@ -60,6 +61,6 @@ class AuthController extends Controller
     public function userInfo()
     {
         $user = Auth::user();
-        return response()->json(['status'=>'ok','user'=>$user]);
+        return new UserResource($user);
     }
 }
