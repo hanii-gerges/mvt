@@ -44,7 +44,7 @@ class Handler extends ExceptionHandler
 
 	// This is the default
         return $request->expectsJson()
-                    ? response()->json(['status' => $exception->getMessage()], 401)
+                    ? response()->json(['status' => 'Unauthenticated'], 401)
                     : response()->json(['status' => 'Accept Header missing'], 401);
     }
 }
