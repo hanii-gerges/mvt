@@ -76,6 +76,11 @@ class QuestionController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(!$question=Question::find($id))
+        {
+            return response()->json(['status'=>'No Question Found with this id']);
+        }
+        
         $validator = Validator::make($request->all(),[
             'title' => 'required',
             'body' => 'required',
@@ -87,10 +92,6 @@ class QuestionController extends Controller
             return response()->json(['status',$validator->errors()]);
         }
 
-        if(!$question=Question::find($id))
-        {
-            return response()->json(['status'=>'No Question Found with this id']);
-        }
 
         $question->update([
             'category_id' => $request->category_id,

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             TagsTableSeeder::class,
             QuestionsTableSeeder::class,
             NewsTableSeeder::class,
+            AnswersTableSeeder::class,
         ]);
     }
 }

@@ -41,6 +41,9 @@ class ArticleController extends Controller
    
     public function store(Request $request)
     {
+        if(Auth::user()->cant('create',Article::class))
+        return response()->json(['status'=>'Unauthorized'],403);
+
         $validator = Validator::make($request->all(),[
             'title' => 'required',
             'body' => 'required',
@@ -55,7 +58,7 @@ class ArticleController extends Controller
         }
 
         $article= Article::create([
-            'user_id' => 1,//Auth::user(),
+            'user_id' => Auth::user(),
             'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
@@ -81,9 +84,17 @@ class ArticleController extends Controller
         return new ArticleResource($article);
     }
 
-
+    
     public function update(Request $request, $id)
     {
+        if(!$article=Article::find($id))
+        {
+            return response()->json(['status'=>'No Article Found with this id']);
+        }
+        
+        if(Auth::user()->cant('update',$article))
+        return response()->json(['status'=>'Unauthorized'],403);
+
         $validator = Validator::make($request->all(),[
             'title' => 'required',
             'body' => 'required',
@@ -96,10 +107,6 @@ class ArticleController extends Controller
             return response()->json(['status' => $validator->errors()]);
         }
 
-        if(!$article=Article::find($id))
-        {
-            return response()->json(['status'=>'No Article Found with this id']);
-        }
 
         $article->update([
             'category_id' => $request->category_id,
@@ -118,11 +125,14 @@ class ArticleController extends Controller
   
     public function destroy($id)
     {
-        // i haven't used (Request $request) because it uses findOrFail and redirects to a not found page
+        // i haven't used (Article $article) because it uses findOrFail and redirects to a not found page
         if(!$article=Article::find($id))
         {
             return response()->json(['status'=>'No Articles Found with this id']);
         }
+
+        if(Auth::user()->cant('delete',$article))
+        return response()->json(['status'=>'Unauthorized'],403);
 
         $article->delete();
         return response()->json(['status'=>'ok']);

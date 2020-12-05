@@ -11,7 +11,10 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        // didn't use validate helper function because if fails it will redirect to the previous page
+        $user = Auth::user();
+        if($user->cant('create',User::class))
+        return response()->json(['status'=>'Unauthorized'],403);
+        // didn't use validate helper function because if it fails it will redirect to the previous page
         $validator = Validator::make($request->all(),[
             'fullname' => 'required|max:50',
             'email' => 'required|email|unique:users|max:50',

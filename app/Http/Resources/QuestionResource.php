@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Answer;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\User;
 
@@ -19,7 +20,7 @@ class QuestionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
-            //'answer' => $this->answer,     //add answers
+            'answer' => new AnswerResource($this->answer),
             'category' => $this->category,
             'tags' => $this->tags,
             'status' => $this->status,

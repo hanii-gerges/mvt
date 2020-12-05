@@ -43,19 +43,24 @@ class EventController extends Controller
 
         return response()->json(['status'=>'ok']);
     }
-
+    
     public function show($id)
     {
         if(!$event = Event::find($id))
         {
-            return response()->json(['status' => 'No Event Found with this id']);
+            return response()->json(['status' => 'No Event Found with this id'],404);
         }
-
+        
         return new EventResource($event);
     }
-
+    
     public function update(Request $request, $id)
     {
+        if(!$event=Event::find($id))
+        {
+            return response()->json(['status'=>'No Event Found with this id'],404);
+        }
+
         $validator = Validator::make($request->all(),[
             'title' => 'required',
             'body' => 'required',
@@ -67,10 +72,6 @@ class EventController extends Controller
             return response()->json(['status' => $validator->errors()]);
         }
 
-        if(!$event=Event::find($id))
-        {
-            return response()->json(['status'=>'No Event Found with this id']);
-        }
 
         $event->update([
             'title' => $request->title,
