@@ -31,7 +31,7 @@ class QuestionController extends Controller
             }
             $questions=$tag->questions;
         }
-        else $questions=Question::paginate(5);
+        else $questions=Question::paginate(3);
 
         return QuestionResource::collection($questions);
     }
