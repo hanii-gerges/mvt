@@ -24,11 +24,18 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::all()->random()->id,
             'category_id' => Category::all()->random()->id,
+            'fullname' => $this->faker->name,
+            'age' => $this->faker->numberBetween(10,100),
+            'phone' => $this->faker->phoneNumber,
+            'email' => $this->faker->email,
+            'reply_method' => $this->faker->randomElement(['whatsapp','facebook','email']),
+            'social_link' => $this->faker->url,
             'title' => $this->faker->realText(20),
             'body' => $this->faker->realText(150),
             'status' => $this->faker->randomElement([0,1]),
+            'sharable_name' => $this->faker->randomElement([0,1]),
+            'sharable_content' => $this->faker->randomElement([0,1]),
         ];
     }
 }

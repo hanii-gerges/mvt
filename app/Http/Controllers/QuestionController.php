@@ -31,7 +31,7 @@ class QuestionController extends Controller
             }
             $questions=$tag->questions;
         }
-        else $questions=Question::all();
+        else $questions=Question::paginate(5);
 
         return QuestionResource::collection($questions);
     }
@@ -39,8 +39,16 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
+            'fullname' => 'required',
+            'age' => 'required|between:10,100',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'reply_method' => 'required',
             'title' => 'required',
             'body' => 'required',
+            'sharable_name' => 'required|boolean',
+            'sharable_content' => 'required|boolean',
+            'category_id' => 'required|exists:categories,id',
             'tags' => 'exists:tags,id'
         ]);
 
@@ -50,11 +58,17 @@ class QuestionController extends Controller
         }
 
         $question= Question::create([
-            'user_id' => 1,//Auth::user(),
             'category_id' => $request->category_id,
+            'fullname' => $request->fullname,
+            'age' => $request->age,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'reply_method' => $request->reply_method,
+            'social_link' => $request->social_link,
             'title' => $request->title,
             'body' => $request->body,
-            'status' => $request->status
+            'sharable_name' => $request->sharable_name,
+            'sharable_content' => $request->sharable_content,
         ]);
 
         //if tags array is null no tags will be attached
@@ -84,6 +98,7 @@ class QuestionController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required',
             'body' => 'required',
+            'status' => 'required|boolean',
             'tags' => 'exists:tags,id'
         ]);
 
@@ -97,6 +112,8 @@ class QuestionController extends Controller
             'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
+            'status' => $request->status,
+
         ]);
         $filtered = null;
         if(request('tags')) $filtered=array_unique(request('tags'));

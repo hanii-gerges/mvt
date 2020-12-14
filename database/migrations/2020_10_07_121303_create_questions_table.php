@@ -15,11 +15,18 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
+            $table->string('fullname');
+            $table->tinyInteger('age');
+            $table->string('phone');
+            $table->string('email');
+            $table->enum('reply_method',['whatsapp','facebook','email']);
+            $table->string('social_link')->nullable();
             $table->string('title');
             $table->text('body');
-            $table->boolean('status');
+            $table->boolean('status')->default(0);
+            $table->boolean('sharable_name');
+            $table->boolean('sharable_content');
             $table->timestamps();
         });
     }

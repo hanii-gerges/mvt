@@ -10,11 +10,17 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
         'category_id',
+        'fullname',
+        'age',
+        'phone',
+        'email',
+        'reply_method',
+        'social_link',
         'title',
         'body',
-        'status',
+        'sharable_name',
+        'sharable_content',
     ];
     public function user()
     {

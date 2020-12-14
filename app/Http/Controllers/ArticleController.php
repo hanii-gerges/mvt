@@ -33,7 +33,7 @@ class ArticleController extends Controller
             }
             $articles=$tag->articles;
         }
-        else $articles=Article::all();
+        else $articles=Article::paginate(5);
 
         return ArticleResource::collection($articles);
     }
