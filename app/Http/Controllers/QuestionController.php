@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Question;
 use App\Http\Resources\QuestionResource;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class QuestionController extends Controller
 {
@@ -30,10 +31,10 @@ class QuestionController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'fullname' => 'required',
-            'age' => 'required|between:10,100',
+            'age' => 'required|integer|between:10,100',
             'phone' => 'required',
             'email' => 'required|email',
-            'reply_method' => 'required',
+            'reply_method' => ['required',Rule::in(['whatsapp','facebook','email'])],
             'title' => 'required',
             'body' => 'required',
             'sharable_name' => 'required|boolean',
