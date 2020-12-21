@@ -54,7 +54,7 @@ class AnswerPolicy
      */
     public function update(User $user, Answer $answer)
     {
-        //
+        return $user->id == $answer->user_id;
     }
 
     /**

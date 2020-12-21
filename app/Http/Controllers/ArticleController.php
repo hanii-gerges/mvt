@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Tag;
 use App\Http\Resources\ArticleResource;
 
 class ArticleController extends Controller
@@ -23,15 +22,6 @@ class ArticleController extends Controller
                 return response()->json(['status'=>'No Category Found with this name']);
             }
             $articles=$category->articles;
-        }
-        else if(request('tag'))
-        {
-            $tag=Tag::where('name',request('tag'))->first();
-            if(!$tag)
-            {
-                return response()->json(['status'=>'No Tag Found with this name']);
-            }
-            $articles=$tag->articles;
         }
         else $articles=Article::paginate(5);
 
@@ -49,7 +39,6 @@ class ArticleController extends Controller
             'body' => 'required',
             'status' => 'required|boolean',
             'category_id' => 'required',
-            'tags' => 'exists:tags,id'
         ]);
 
         if($validator->fails())
@@ -66,10 +55,10 @@ class ArticleController extends Controller
             
         ]);
 
-        //if tags array is null no tags will be attached
-        $filtered= null;
-        if(request('tags')) $filtered=array_unique(request('tags'));
-        $article->tags()->attach($filtered);
+        // //if tags array is null no tags will be attached
+        // $filtered= null;
+        // if(request('tags')) $filtered=array_unique(request('tags'));
+        // $article->tags()->attach($filtered);
 
         return response()->json(['status'=>'ok']);
     }
@@ -99,7 +88,6 @@ class ArticleController extends Controller
             'title' => 'required',
             'body' => 'required',
             'category_id' => 'required',
-            'tags' => 'exists:tags,id'
         ]);
 
         if($validator->fails())
@@ -113,10 +101,11 @@ class ArticleController extends Controller
             'title' => $request->title,
             'body' => $request->body,
         ]);
-        $filtered = null;
-        if(request('tags')) $filtered=array_unique(request('tags'));
-        $article->tags()->detach();
-        $article->tags()->attach($filtered);
+        
+        // $filtered = null;
+        // if(request('tags')) $filtered=array_unique(request('tags'));
+        // $article->tags()->detach();
+        // $article->tags()->attach($filtered);
 
 
         return response()->json(['status'=>'ok']);

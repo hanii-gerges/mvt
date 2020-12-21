@@ -21,7 +21,6 @@ class ArticleResource extends JsonResource
             'body' => $this->body,
             'image' => "not yet",
             'category' => $this->category,
-            'tags' => $this->tags,
             'author' => new UserResource(User::find($this->user_id)),
             'status' =>$this->status,
 

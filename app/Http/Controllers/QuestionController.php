@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\Tag;
 use App\Models\Question;
 use App\Http\Resources\QuestionResource;
 use Illuminate\Support\Facades\Validator;
@@ -20,16 +19,7 @@ class QuestionController extends Controller
             {
                 return response()->json(['status'=>'No Category Found with this name']);
             }
-            $questions=$category->questions;
-        }
-        else if(request('tag'))
-        {
-            $tag=Tag::where('name',request('tag'))->first();
-            if(!$tag)
-            {
-                return response()->json(['status'=>'No Tag Found with this name']);
-            }
-            $questions=$tag->questions;
+            $questions=Question::where('category_id',$category->id)->paginate(3);
         }
         else $questions=Question::paginate(3);
 
@@ -49,7 +39,6 @@ class QuestionController extends Controller
             'sharable_name' => 'required|boolean',
             'sharable_content' => 'required|boolean',
             'category_id' => 'required|exists:categories,id',
-            'tags' => 'exists:tags,id'
         ]);
 
         if($validator->fails())
@@ -71,10 +60,10 @@ class QuestionController extends Controller
             'sharable_content' => $request->sharable_content,
         ]);
 
-        //if tags array is null no tags will be attached
-        $filtered= null;
-        if(request('tags')) $filtered=array_unique(request('tags'));
-        $question->tags()->attach($filtered);
+        // //if tags array is null no tags will be attached
+        // $filtered= null;
+        // if(request('tags')) $filtered=array_unique(request('tags'));
+        // $question->tags()->attach($filtered);
 
         return response()->json(['status'=>'ok']);
     }
@@ -99,7 +88,6 @@ class QuestionController extends Controller
             'title' => 'required',
             'body' => 'required',
             'status' => 'required|boolean',
-            'tags' => 'exists:tags,id'
         ]);
 
         if($validator->fails())
@@ -115,10 +103,11 @@ class QuestionController extends Controller
             'status' => $request->status,
 
         ]);
-        $filtered = null;
-        if(request('tags')) $filtered=array_unique(request('tags'));
-        $question->tags()->detach();
-        $question->tags()->attach($filtered);
+
+        // $filtered = null;
+        // if(request('tags')) $filtered=array_unique(request('tags'));
+        // $question->tags()->detach();
+        // $question->tags()->attach($filtered);
 
 
         return response()->json(['status'=>'ok']);

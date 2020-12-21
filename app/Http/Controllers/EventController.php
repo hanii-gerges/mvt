@@ -36,10 +36,10 @@ class EventController extends Controller
             'status' => $request->status,
         ]);
 
-        //if tags array is null no tags will be attached
-        $filtered = null;
-        if(request('participants')) $filtered=array_unique(request('participants'));
-        $event->users()->attach($filtered);
+        // //if tags array is null no tags will be attached
+        // $filtered = null;
+        // if(request('participants')) $filtered=array_unique(request('participants'));
+        // $event->users()->attach($filtered);
 
         return response()->json(['status'=>'ok']);
     }

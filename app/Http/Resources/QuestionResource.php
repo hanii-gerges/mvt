@@ -22,7 +22,6 @@ class QuestionResource extends JsonResource
             'body' => $this->body,
             'answer' => new AnswerResource($this->answer),
             'category' => $this->category,
-            'tags' => $this->tags,
             'status' => $this->status,
         ];
     }

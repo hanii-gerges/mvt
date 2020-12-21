@@ -37,9 +37,6 @@ class Question extends Model
         return $this->hasOne(Answer::class);
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
+   
     
 }

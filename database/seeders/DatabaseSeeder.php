@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             EventsTableSeeder::class,
             ArticlesTableSeeder::class,
-            TagsTableSeeder::class,
             QuestionsTableSeeder::class,
             NewsTableSeeder::class,
             AnswersTableSeeder::class,
