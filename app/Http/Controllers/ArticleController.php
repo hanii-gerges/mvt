@@ -21,9 +21,9 @@ class ArticleController extends Controller
             {
                 return response()->json(['status'=>'No Category Found with this name']);
             }
-            $articles=$category->articles;
+            $articles=Article::where('category_id',$category->id)->paginate(3);
         }
-        else $articles=Article::paginate(5);
+        else $articles=Article::paginate(3);
 
         return ArticleResource::collection($articles);
     }

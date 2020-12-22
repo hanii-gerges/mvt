@@ -29,6 +29,7 @@ class User extends Authenticatable
         'top_user',
         'status',
         'position_id',
+        'section_id',
         
     ];
 
