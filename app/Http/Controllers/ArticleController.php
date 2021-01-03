@@ -31,8 +31,8 @@ class ArticleController extends Controller
    
     public function store(Request $request)
     {
-        if(Auth::user()->cant('create',Article::class))
-        return response()->json(['status'=>'Unauthorized'],403);
+        // if(Auth::user()->cant('create',Article::class))
+        // return response()->json(['status'=>'Unauthorized'],403);
 
         $validator = Validator::make($request->all(),[
             'title' => 'required',
@@ -68,7 +68,7 @@ class ArticleController extends Controller
     {
         if(!$article = Article::find($id))
         {
-            return response()->json(['status'=>'No Article Found with this id']);
+            return response()->json(['status'=>'No Article Found with this id'],404);
         }
         return new ArticleResource($article);
     }
@@ -78,7 +78,7 @@ class ArticleController extends Controller
     {
         if(!$article=Article::find($id))
         {
-            return response()->json(['status'=>'No Article Found with this id']);
+            return response()->json(['status'=>'No Article Found with this id'],404);
         }
         
         if(Auth::user()->cant('update',$article))
@@ -117,7 +117,7 @@ class ArticleController extends Controller
         // i haven't used (Article $article) because it uses findOrFail and redirects to a not found page
         if(!$article=Article::find($id))
         {
-            return response()->json(['status'=>'No Articles Found with this id']);
+            return response()->json(['status'=>'No Articles Found with this id'],404);
         }
 
         if(Auth::user()->cant('delete',$article))

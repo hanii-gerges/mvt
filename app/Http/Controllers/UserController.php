@@ -29,7 +29,7 @@ class UserController extends Controller
             $branch=Branch::where('name',request('branch'))->first();
             if(!$branch)
             {
-                return response()->json(['status'=>'not found'],404);
+                return response()->json(['status'=>'No branch found with this name'],404);
             }
             $users=$branch->users;
         }
@@ -38,7 +38,7 @@ class UserController extends Controller
             $section=Section::where('name',request('section'))->first();
             if(!$section)
             {
-                return response()->json(['status'=>'not found'],404);
+                return response()->json(['status'=>'No section found with this name'],404);
             }
             $users=$section->users;
         }
@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         if(!$user=User::find($id))
         {
-            return response()->json(['status'=>'not found'],404);
+            return response()->json(['status'=>'No users found with this id'],404);
         }
         return new UserResource($user);
     }
