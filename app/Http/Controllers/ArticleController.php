@@ -81,8 +81,8 @@ class ArticleController extends Controller
             return response()->json(['status'=>'No Article Found with this id'],404);
         }
         
-        if(Auth::user()->cant('update',$article))
-        return response()->json(['status'=>'Unauthorized'],403);
+        // if(Auth::user()->cant('update',$article))
+        // return response()->json(['status'=>'Unauthorized'],403);
 
         $validator = Validator::make($request->all(),[
             'title' => 'required',
@@ -120,8 +120,8 @@ class ArticleController extends Controller
             return response()->json(['status'=>'No Articles Found with this id'],404);
         }
 
-        if(Auth::user()->cant('delete',$article))
-        return response()->json(['status'=>'Unauthorized'],403);
+        // if(Auth::user()->cant('delete',$article))
+        // return response()->json(['status'=>'Unauthorized'],403);
 
         $article->delete();
         return response()->json(['status'=>'ok']);
