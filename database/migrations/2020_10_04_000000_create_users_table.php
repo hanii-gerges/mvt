@@ -15,9 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('position_id')->default(1);//->constrained('users')->onDelete('cascade');
-            $table->foreignId('section_id')->default(1);//->constrained('users')->onDelete('cascade');
-            $table->foreignId('branch_id')->default(1);//->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('position_id')->default(1);//->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('section_id')->default(1);//->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('branch_id')->default(1);//->constrained('users')->onDelete('cascade');
             $table->string('fullname');
             $table->text('bio')->nullable();
             $table->string('email')->unique();

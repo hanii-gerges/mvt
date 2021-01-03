@@ -1,0 +1,3 @@
+mysql --host=us-cdbr-east-02.cleardb.com --user=bc34664f2235b9 --password=45f9acf2
+use heroku_830ef05cfe23965;
+

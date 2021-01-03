@@ -28,9 +28,9 @@ class User extends Authenticatable
         'password',
         'top_user',
         'status',
-        'position_id',
+        //'position_id',
         'section_id',
-        
+        'branch_id',
     ];
 
     /**
