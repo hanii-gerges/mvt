@@ -8,15 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use App\Http\Resources\ArticleResource;
-use App\Models\Branch;
-use App\Models\Section;
+
 
 class ArticleController extends Controller
 {
     // sql injection ??!!
     public function index()
     {
-        return response()->json([Branch::all()->pluck('name','id')]);
         if(request('category'))
         {
             $category=Category::where('name',request('category'))->first();
