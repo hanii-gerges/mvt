@@ -19,7 +19,7 @@ class ArticleController extends Controller
             $category=Category::where('name',request('category'))->first();
             if(!$category)
             {
-                return response()->json(['status'=>'No Category Found with this name']);
+                return response()->json(['status'=>'No Category Found with this name'],404);
             }
             $articles=Article::where('category_id',$category->id)->paginate(3);
         }
@@ -43,7 +43,7 @@ class ArticleController extends Controller
 
         if($validator->fails())
         {
-            return response()->json(['status' => $validator->errors()]);
+            return response()->json(['status' => $validator->errors()],400);
         }
 
         $article= Article::create([
@@ -92,7 +92,7 @@ class ArticleController extends Controller
 
         if($validator->fails())
         {
-            return response()->json(['status' => $validator->errors()]);
+            return response()->json(['status' => $validator->errors()],400);
         }
 
 

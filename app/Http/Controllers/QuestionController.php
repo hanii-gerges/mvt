@@ -18,7 +18,7 @@ class QuestionController extends Controller
             $category=Category::where('name',request('category'))->first();
             if(!$category)
             {
-                return response()->json(['status'=>'No Category Found with this name']);
+                return response()->json(['status'=>'No Category Found with this name'],404);
             }
             $questions=Question::where('category_id',$category->id)->paginate(3);
         }
@@ -44,7 +44,7 @@ class QuestionController extends Controller
 
         if($validator->fails())
         {
-            return response()->json(['status' => $validator->errors()]);
+            return response()->json(['status' => $validator->errors()],400);
         }
 
         $question= Question::create([
@@ -73,7 +73,7 @@ class QuestionController extends Controller
     {
         if(!$question=Question::find($id))
         {
-            return response()->json(['status'=>'No Question Found with this id']);
+            return response()->json(['status'=>'No Question Found with this id'],404);
         }
         return new QuestionResource($question);
     }
@@ -82,7 +82,7 @@ class QuestionController extends Controller
     {
         if(!$question=Question::find($id))
         {
-            return response()->json(['status'=>'No Question Found with this id']);
+            return response()->json(['status'=>'No Question Found with this id'],404);
         }
         
         $validator = Validator::make($request->all(),[
@@ -93,7 +93,7 @@ class QuestionController extends Controller
 
         if($validator->fails())
         {
-            return response()->json(['status',$validator->errors()]);
+            return response()->json(['status',$validator->errors()],400);
         }
 
 
@@ -119,7 +119,7 @@ class QuestionController extends Controller
         // i haven't used (Request $request) because it uses findOrFail and redirects to a not found page
         if(!$question=Question::find($id))
         {
-            return response()->json(['status'=>'No Question Found with this id']);
+            return response()->json(['status'=>'No Question Found with this id'],404);
         }
 
         $question->delete();

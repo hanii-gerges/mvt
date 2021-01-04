@@ -18,8 +18,8 @@ class CreateQuestionsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->string('fullname');
             $table->tinyInteger('age');
-            $table->string('phone');
-            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->enum('reply_method',['whatsapp','facebook','email']);
             $table->string('social_link')->nullable();
             $table->string('title');
