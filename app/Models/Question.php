@@ -20,7 +20,7 @@ class Question extends Model
         'title',
         'body',
         'answer',
-        'answer_auther',
+        'answer_author',
         'status',
         'sharable_name',
         'sharable_content',
