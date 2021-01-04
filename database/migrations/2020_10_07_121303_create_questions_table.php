@@ -24,6 +24,8 @@ class CreateQuestionsTable extends Migration
             $table->string('social_link')->nullable();
             $table->string('title');
             $table->text('body');
+            $table->text('answer')->nullable();
+            $table->unsignedBigInteger('answer_author')->nullable();
             $table->boolean('status')->default(0);
             $table->boolean('sharable_name');
             $table->boolean('sharable_content');

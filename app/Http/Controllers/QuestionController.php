@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Question;
 use App\Http\Resources\QuestionResource;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -27,13 +28,17 @@ class QuestionController extends Controller
         return QuestionResource::collection($questions);
     }
     
+    public function showUnpublished()
+    {
+        $questions = Question::where('status',0)->get();
+        return $questions;
+    }
+    
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
             'fullname' => 'required',
             'age' => 'required|integer|between:10,100',
-            'phone' => 'required',
-            'email' => 'required|email',
             'reply_method' => ['required',Rule::in(['whatsapp','facebook','email'])],
             'title' => 'required',
             'body' => 'required',
@@ -61,10 +66,6 @@ class QuestionController extends Controller
             'sharable_content' => $request->sharable_content,
         ]);
 
-        // //if tags array is null no tags will be attached
-        // $filtered= null;
-        // if(request('tags')) $filtered=array_unique(request('tags'));
-        // $question->tags()->attach($filtered);
 
         return response()->json(['status'=>'ok']);
     }
@@ -96,20 +97,17 @@ class QuestionController extends Controller
             return response()->json(['status',$validator->errors()],400);
         }
 
-
         $question->update([
             'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
+            'answer_author' => Auth::user()->id,
+            'answer' => $request->answer,
             'status' => $request->status,
 
         ]);
 
-        // $filtered = null;
-        // if(request('tags')) $filtered=array_unique(request('tags'));
-        // $question->tags()->detach();
-        // $question->tags()->attach($filtered);
-
+        
 
         return response()->json(['status'=>'ok']);
     }

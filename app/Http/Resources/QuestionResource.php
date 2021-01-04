@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Answer;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class QuestionResource extends JsonResource
 {
@@ -20,7 +20,10 @@ class QuestionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
-            'answer' => new AnswerResource($this->answer),
+            'answer' => [
+                'author' => new UserResource(User::find($this->answer_author)),
+                'body' => $this->answer,
+            ],
             'category' => $this->category,
             'status' => $this->status,
         ];

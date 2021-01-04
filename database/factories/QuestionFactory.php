@@ -33,6 +33,8 @@ class QuestionFactory extends Factory
             'social_link' => $this->faker->url,
             'title' => $this->faker->realText(20),
             'body' => $this->faker->realText(150),
+            'answer_author' => User::all()->random()->id,
+            'answer' => $this->faker->realText(150),
             'status' => $this->faker->randomElement([0,1]),
             'sharable_name' => $this->faker->randomElement([0,1]),
             'sharable_content' => $this->faker->randomElement([0,1]),

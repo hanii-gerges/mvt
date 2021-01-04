@@ -40,10 +40,12 @@ Route::delete('/articles/{article}',[ArticleController::class,'destroy'])->middl
 
 /* Consultation CRUD */
 Route::get('/questions',[QuestionController::class,'index']);
+Route::get('/questions/unpublished',[QuestionController::class,'showUnpublished']);
 Route::post('/questions',[QuestionController::class,'store']);
 Route::get('/questions/{question}',[QuestionController::class,'show']);
 Route::put('/questions/{question}',[QuestionController::class,'update'])->middleware('auth:sanctum'); 
 Route::delete('/questions/{question}',[QuestionController::class,'destroy'])->middleware('auth:sanctum');
+
 
 /* Events CRUD */
 Route::get('/events',[EventController::class,'index']);
@@ -51,8 +53,6 @@ Route::post('/events',[EventController::class,'store'])->middleware('auth:sanctu
 Route::get('/events/{event}',[EventController::class,'show']);
 Route::put('/events/{event}',[EventController::class,'update'])->middleware('auth:sanctum');  
 Route::delete('/events/{event}',[EventController::class,'destroy'])->middleware('auth:sanctum');
-
-/* Answers CRUD */
 
 
 Route::post('/rate',[RateController::class,'addRate'])->middleware('auth:sanctum');

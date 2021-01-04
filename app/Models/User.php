@@ -67,10 +67,7 @@ class User extends Authenticatable
         return $this->hasMany(News::class);
     }
 
-    public function answers()
-    {
-        return $this->hasMany(Answer::class);
-    }
+    
 
     public function position()
     {
