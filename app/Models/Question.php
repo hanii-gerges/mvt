@@ -19,6 +19,9 @@ class Question extends Model
         'social_link',
         'title',
         'body',
+        'answer',
+        'answer_auther',
+        'status',
         'sharable_name',
         'sharable_content',
     ];

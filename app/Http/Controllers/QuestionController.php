@@ -105,8 +105,7 @@ class QuestionController extends Controller
             'status' => $request->status,
 
         ]);
-
-        return $request->answer;
+        
         
 
         return response()->json(['status'=>'ok']);
