@@ -98,7 +98,6 @@ class QuestionController extends Controller
         }
 
         $question->update([
-            'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
             'answer_author' => Auth::user()->id,
