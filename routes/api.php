@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -60,5 +61,7 @@ Route::post('/rate',[RateController::class,'addRate'])->middleware('auth:sanctum
 
 Route::put('/promote',[PromotionController::class,'promote'])->middleware('auth:sanctum');
 
+Route::get('/applications',[ApplicationController::class,'index']);
+Route::post('/applications',[ApplicationController::class,'store']);
 
 

@@ -20,6 +20,9 @@ class QuestionResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
+            'age' => $this->age,
+            'sharable_name' => $this->sharable_name,
+            'sharable_content' => $this->sharable_content,
             'answer' => [
                 'author' => new UserResource(User::find($this->answer_author)),
                 'body' => $this->answer,
