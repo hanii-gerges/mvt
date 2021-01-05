@@ -22,7 +22,7 @@ class CreateApplicationsTable extends Migration
             $table->string('birth_place')->nullable();
             $table->string('residence_place')->nullable();
             $table->string('email')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone');
             $table->string('facebook_link')->nullable();
             $table->string('education_level')->nullable();
             $table->string('major')->nullable();
