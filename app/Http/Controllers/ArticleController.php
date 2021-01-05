@@ -22,9 +22,9 @@ class ArticleController extends Controller
             {
                 return response()->json(['status'=>'No Category Found with this name'],404);
             }
-            $articles=Article::where('category_id',$category->id)->paginate(9);
+            $articles=Article::where('category_id',$category->id)->paginate(12);
         }
-        else $articles=Article::paginate(9);
+        else $articles=Article::paginate(12);
 
         return ArticleResource::collection($articles);
     }
