@@ -29,7 +29,12 @@ class ArticleController extends Controller
         return ArticleResource::collection($articles);
     }
 
-   
+    public function showUnpublished()
+    {
+        $articles = Article::where('status',0)->get();
+        return ArticleResource::collection($articles);
+    }
+
     public function store(Request $request)
     {
         // if(Auth::user()->cant('create',Article::class))

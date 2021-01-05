@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         if($validator->fails())
         {
-            return response()->json(['status'=>$validator->errors()]);
+            return response()->json(['status'=>$validator->errors()],400);
         }
         $request['password'] = bcrypt($request['password']);
         $user = User::create($request->all());
@@ -42,12 +42,12 @@ class AuthController extends Controller
 
         if($credentials->fails())
         {
-            return response()->json(['status' => $credentials->errors()]);
+            return response()->json(['status' => $credentials->errors()],400);
         }
 
         if(!Auth::attempt($request->only('email','password')))
         {
-            return response()->json(['status'=>'Invalid Credentials']);
+            return response()->json(['status'=>'Invalid Credentials'],400);
         }
         $user = Auth::user();
         $user->tokens()->where('tokenable_id', $user->id)->delete();

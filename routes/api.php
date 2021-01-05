@@ -33,6 +33,7 @@ Route::get('/users/{user}',[UserController::class,'show']);
 
 /* Article CRUD */
 Route::get('/articles',[ArticleController::class,'index']);
+Route::get('articles/unpublished',[ArticleController::class,'showUnpublished']);
 Route::post('/articles',[ArticleController::class,'store'])->middleware('auth:sanctum');
 Route::get('/articles/{article}',[ArticleController::class,'show']);
 Route::put('/articles/{article}',[ArticleController::class,'update'])->middleware('auth:sanctum'); //change from form-data to x-www-form-urlencoded 
