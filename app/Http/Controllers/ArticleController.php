@@ -61,7 +61,7 @@ class ArticleController extends Controller
             'status' => $request->status,
         ]);
 
-        
+
         if($request->file('image'))
         $article->addMedia($request->file('image'))->toMediaCollection();
 
@@ -100,6 +100,7 @@ class ArticleController extends Controller
             'title' => 'required',
             'body' => 'required',
             'category_id' => 'required',
+            'status' => 'required|boolean',
         ]);
 
         if($validator->fails())
@@ -112,6 +113,7 @@ class ArticleController extends Controller
             'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
+            'status' => $request->status,
         ]);
         
         
