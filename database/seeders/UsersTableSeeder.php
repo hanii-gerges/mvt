@@ -20,21 +20,21 @@ class UsersTableSeeder extends Seeder
             'fullname' => 'maher',
             'email' => 'mahericpc@gmail.com',
             'password' => bcrypt('12345678'),
-            'section_id' => 71,
+            'section_id' => 8,
         ]);
 
         User::create([
             'fullname' => 'najm',
             'email' => 'nabhaninajm@gmail.com',
             'password' => bcrypt('12345678'),
-            'section_id' => 71,
+            'section_id' => 8,
         ]);
 
         User::create([
             'fullname' => 'hani',
             'email' => 'abualhen@gmail.com',
             'password' => bcrypt('12345678'),
-            'section_id' => 71,
+            'section_id' => 8,
         ]);
     }
 }

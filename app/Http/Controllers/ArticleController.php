@@ -40,6 +40,7 @@ class ArticleController extends Controller
             'body' => 'required',
             'status' => 'required|boolean',
             'category_id' => 'required',
+            'image' => 'required',
         ]);
 
         if($validator->fails())
@@ -47,13 +48,16 @@ class ArticleController extends Controller
             return response()->json(['status' => $validator->errors()],400);
         }
 
-        $article= Article::create([
+        $article = Article::create([
             'user_id' => Auth::user()->id,
             'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
-            'status' => $request->status
-        ])->addMedia($request->file('image'))->toMediaCollection();
+            'status' => $request->status,
+        ]);
+
+        if($request->file('image'))
+        $article->addMedia($request->file('image'))->toMediaCollection();
 
         //$path = Storage::disk('s3')->put('images/originals', $request->image);
 
@@ -104,6 +108,7 @@ class ArticleController extends Controller
             'title' => $request->title,
             'body' => $request->body,
         ]);
+        
         
         // $filtered = null;
         // if(request('tags')) $filtered=array_unique(request('tags'));
