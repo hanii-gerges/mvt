@@ -17,7 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->string('name_english')->nullable();
             $table->string('name_arabic');
-            $table->date('birthdate');
+            $table->string('birthdate');
             $table->string('nationality');
             $table->string('birth_place')->nullable();
             $table->string('residence_place')->nullable();
