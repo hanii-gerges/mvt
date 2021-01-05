@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\UserResource;
+use App\Models\Application;
 
 class AuthController extends Controller
 {
@@ -27,9 +28,17 @@ class AuthController extends Controller
         {
             return response()->json(['status'=>$validator->errors()],400);
         }
+
         $request['password'] = bcrypt($request['password']);
         $user = User::create($request->all());
+
+        $foundInApp = Application::where('email',$user->email)->first();
+        if($foundInApp)
+        {
+            $foundInApp->delete();
+        }
         $token = $user->createToken('authToken')->plainTextToken;
+
         return response()->json(['status'=>'ok','token'=>$token]);
     }
 
