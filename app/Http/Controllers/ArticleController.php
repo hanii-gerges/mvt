@@ -60,12 +60,12 @@ class ArticleController extends Controller
             'body' => $request->body,
             'status' => $request->status,
         ]);
+        return var_dump($request->file('image'));
 
         if($request->file('image'))
         $article->addMedia($request->file('image'))->toMediaCollection();
 
         //$path = Storage::disk('s3')->put('images/originals', $request->image);
-
 
         // //if tags array is null no tags will be attached
         // $filtered= null;
