@@ -60,8 +60,8 @@ class ArticleController extends Controller
             'body' => $request->body,
             'status' => $request->status,
         ]);
-        return var_dump($request->file('image'));
 
+        
         if($request->file('image'))
         $article->addMedia($request->file('image'))->toMediaCollection();
 
