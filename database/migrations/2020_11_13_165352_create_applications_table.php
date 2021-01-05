@@ -21,7 +21,7 @@ class CreateApplicationsTable extends Migration
             $table->string('nationality');
             $table->string('birth_place')->nullable();
             $table->string('residence_place')->nullable();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone');
             $table->string('facebook_link')->nullable();
             $table->string('education_level')->nullable();
