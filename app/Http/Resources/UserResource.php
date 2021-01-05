@@ -16,7 +16,7 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => 'not yet',
+            'image' => $this->getFirstMedia() != null ? $this->getFirstMedia()->getUrl():null,
             'fullname' => $this->fullname,
             //'university' => 'not yet',
             //'major' => 'not yet',

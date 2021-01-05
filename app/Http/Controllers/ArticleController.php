@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use App\Http\Resources\ArticleResource;
-
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -48,13 +48,15 @@ class ArticleController extends Controller
         }
 
         $article= Article::create([
-            'user_id' => Auth::user(),
+            'user_id' => Auth::user()->id,
             'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
             'status' => $request->status
-            
-        ]);
+        ])->addMedia($request->file('image'))->toMediaCollection();
+
+        //$path = Storage::disk('s3')->put('images/originals', $request->image);
+
 
         // //if tags array is null no tags will be attached
         // $filtered= null;

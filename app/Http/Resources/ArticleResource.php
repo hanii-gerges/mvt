@@ -17,9 +17,9 @@ class ArticleResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'image' => $this->getFirstMedia() != null ? $this->getFirstMedia()->getUrl():null,
             'title' => $this->title,
             'body' => $this->body,
-            'image' => "not yet",
             'category' => $this->category,
             'author' => new UserResource(User::find($this->user_id)),
             'status' =>$this->status,
