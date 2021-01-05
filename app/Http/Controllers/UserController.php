@@ -56,4 +56,21 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
+    public function update(Request $request, $id)
+    {
+        if(!$user=User::find($id))
+        {
+            return response()->json(['status'=>'No users found with this id'],404);
+        }
+        
+        $user->update([
+            'bio' => $request->bio,
+        ]);
+
+        if($request->file('image'))
+        $user->addMedia($request->file('image'))->toMediaCollection();
+
+        return response()->json(['status'=>'ok']);
+    }
+
 }

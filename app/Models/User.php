@@ -33,6 +33,7 @@ class User extends Authenticatable implements HasMedia
         //'position_id',
         'section_id',
         'branch_id',
+        'bio',
     ];
 
     /**

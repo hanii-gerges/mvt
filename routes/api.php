@@ -31,6 +31,7 @@ Route::get('/users/me', [AuthController::class,'userInfo'])->middleware('auth:sa
 Route::get('/users/logout',[AuthController::class,'logout'])->middleware('auth:sanctum');
 Route::get('/users',[UserController::class,'index']);
 Route::get('/users/{user}',[UserController::class,'show']);
+Route::put('/users/{user}',[UserController::class,'update']);
 
 /* Article CRUD */
 Route::get('/articles',[ArticleController::class,'index']);
