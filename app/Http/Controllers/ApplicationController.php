@@ -21,7 +21,7 @@ class ApplicationController extends Controller
             'fullname' => 'required',
             'birthdate' => 'required|date',
             'nationality' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique',
             'phone' => 'required',
             'about' => 'required',
         ]);
