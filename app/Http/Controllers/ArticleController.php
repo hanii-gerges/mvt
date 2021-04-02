@@ -63,7 +63,9 @@ class ArticleController extends Controller
 
 
         if($request->file('image'))
-        $article->addMedia($request->file('image'))->toMediaCollection();
+        {
+            $article->addMedia($request->file('image'))->toMediaCollection();
+        }
 
         //$path = Storage::disk('s3')->put('images/originals', $request->image);
 
