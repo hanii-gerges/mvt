@@ -23,20 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53a770ab-26ef-4e12-9086-790ebc376c83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/dashboard/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/layouts/app.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/layouts/parts/footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/layouts/parts/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/layouts/parts/loading.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/layouts/parts/navbar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/layouts/parts/page-footer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/cms/layouts/parts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mvt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mvt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HeroSliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HeroSliderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/HeroSlider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/HeroSlider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_07_20_131021_create_hero_sliders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_07_20_131021_create_hero_sliders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +227,9 @@
       <workItem from="1602229862568" duration="1556000" />
       <workItem from="1603386796188" duration="5627000" />
       <workItem from="1603462684598" duration="698000" />
-      <workItem from="1627134969649" duration="10507000" />
+      <workItem from="1627134969649" duration="11299000" />
+      <workItem from="1627481329495" duration="306000" />
+      <workItem from="1629473815729" duration="9811000" />
     </task>
     <servers />
   </component>
@@ -252,8 +246,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1629585022933">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1629585022933" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1627152232873">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1627152232873" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1627139338304">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

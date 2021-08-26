@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class HeroSlider extends Model implements HasMedia
+class Service extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = ["title", "body", "title","order", "disabled"];
+    protected $fillable = ["title", "description"];
 }

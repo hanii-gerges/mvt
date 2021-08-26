@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHeroSlidersTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateHeroSlidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('hero_sliders', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('body');
-            $table->char("type",2)->default("i")->comment("i:image,v:video");
-            $table->integer('order');
-            $table->boolean('disabled')->default(false);
+            $table->string("title");
+            $table->text("description");
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateHeroSlidersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hero_sliders');
+        Schema::dropIfExists('services');
     }
 }

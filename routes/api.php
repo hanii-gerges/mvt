@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\HeroSliderController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -38,7 +40,7 @@ Route::get('/articles',[ArticleController::class,'index']);
 Route::get('articles/unpublished',[ArticleController::class,'showUnpublished']);
 Route::post('/articles',[ArticleController::class,'store'])->middleware('auth:sanctum');
 Route::get('/articles/{article}',[ArticleController::class,'show']);
-Route::put('/articles/{article}',[ArticleController::class,'update'])->middleware('auth:sanctum'); //change from form-data to x-www-form-urlencoded 
+Route::put('/articles/{article}',[ArticleController::class,'update'])->middleware('auth:sanctum'); //change from form-data to x-www-form-urlencoded
 Route::delete('/articles/{article}',[ArticleController::class,'destroy'])->middleware('auth:sanctum');
 
 /* Consultation CRUD */
@@ -46,7 +48,7 @@ Route::get('/questions',[QuestionController::class,'index']);
 Route::get('/questions/unpublished',[QuestionController::class,'showUnpublished']);
 Route::post('/questions',[QuestionController::class,'store']);
 Route::get('/questions/{question}',[QuestionController::class,'show']);
-Route::put('/questions/{question}',[QuestionController::class,'update'])->middleware('auth:sanctum'); 
+Route::put('/questions/{question}',[QuestionController::class,'update'])->middleware('auth:sanctum');
 Route::delete('/questions/{question}',[QuestionController::class,'destroy'])->middleware('auth:sanctum');
 
 
@@ -54,7 +56,7 @@ Route::delete('/questions/{question}',[QuestionController::class,'destroy'])->mi
 Route::get('/events',[EventController::class,'index']);
 Route::post('/events',[EventController::class,'store'])->middleware('auth:sanctum');
 Route::get('/events/{event}',[EventController::class,'show']);
-Route::put('/events/{event}',[EventController::class,'update'])->middleware('auth:sanctum');  
+Route::put('/events/{event}',[EventController::class,'update'])->middleware('auth:sanctum');
 Route::delete('/events/{event}',[EventController::class,'destroy'])->middleware('auth:sanctum');
 
 
@@ -66,3 +68,9 @@ Route::get('/applications',[ApplicationController::class,'index']);
 Route::post('/applications',[ApplicationController::class,'store']);
 
 
+/* Slider */
+Route::get("/sliders",[HeroSliderController::class, 'index']);
+
+
+/* Services CRUD */
+Route::get("/services",[ServiceController::class, 'index']);

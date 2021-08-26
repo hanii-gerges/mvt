@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\HeroSliderResource;
-use App\Models\HeroSlider;
+use App\Http\Resources\ServiceResource;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
-class HeroSliderController extends Controller
+class ServiceController extends Controller
 {
 
     public function index()
     {
-        $sliders = HeroSlider::where("disabled","false")->orderBy("order","ASC")->get();
-        return HeroSliderResource::collection($sliders);
-
+        return ServiceResource::collection(Service::all());
     }
 
     /**
@@ -40,10 +38,10 @@ class HeroSliderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HeroSlider  $heroSlider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(HeroSlider $heroSlider)
+    public function show($id)
     {
         //
     }
@@ -51,10 +49,10 @@ class HeroSliderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HeroSlider  $heroSlider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(HeroSlider $heroSlider)
+    public function edit($id)
     {
         //
     }
@@ -63,10 +61,10 @@ class HeroSliderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\HeroSlider  $heroSlider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HeroSlider $heroSlider)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -74,10 +72,10 @@ class HeroSliderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HeroSlider  $heroSlider
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HeroSlider $heroSlider)
+    public function destroy($id)
     {
         //
     }
